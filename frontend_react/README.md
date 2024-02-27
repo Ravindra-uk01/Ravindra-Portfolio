@@ -16,7 +16,7 @@ Welcome to my portfolio repository! 🚀 Explore a showcase of my skills and pro
 
 ## How to Run
 
-1. Clone the repository: `git clone https://github.com/your-username/your-portfolio.git`
+1. Clone the repository: `[git clone https://github.com/your-username/your-portfolio.git](https://github.com/Ravindra-uk01/Ravindra-Portfolio.git)`
 2. Install dependencies: `npm install`
 3. Run the app: `npm start`
 
