@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import {AppWrap, MotionWrap} from '../../wrapper'
+import {images} from '../../constants'
+import {client} from '../../client'
 import './Footer.scss'
 
 const Footer = () => {
@@ -21,7 +23,28 @@ const Footer = () => {
   const {name, email , message} = formData;
 
   const handleSubmit = ()=>{
-      console.log('heyy');
+      setLoading(true);
+
+      const contact = {
+        _type : 'contact',
+        name : formData.name,
+        email : formData.email, 
+        message : formData.message,
+      }
+
+      // console.log('contact is ', contact);
+
+      client.create(contact)
+      .then(()=> {
+        setLoading(false);
+        setIsFormSubmitted(true);
+        setFormData({
+          name : "",
+          email : "",
+          message : ""
+        })
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -30,28 +53,36 @@ const Footer = () => {
 
       <div className='app__footer-cards'>
          <div className='app__footer-card' >
-           <img src='../../assets/email.png' alt='Email' />
-           <a href='mailTo:rayalravi2001@gmail.com' >rayalravi2001@gmail.com</a>
+           <img src={images.email} alt='Email' />
+           <a href='mailto:rayalravi2001@gmail.com' className='p-text' >rayalravi2001@gmail.com</a>
          </div>
 
          <div className='app__footer-card' >
-           <img src='../../assets/mobile.png' alt='Mobile' />
-           <a href='phon:+91 8882719097' >+91 8882719097</a>
+           <img src={images.mobile} alt='Mobile' />
+           <a href='tel:+91 8882719097' className='p-text' >+91 8882719097</a>
          </div>
       </div>
 
-      <div className='app__footer-form'>
-        <div>
-          <input type='text' name='name' onChange={handleInputChange} placeholder='Your name' />
+     { !isFormSubmitted ? <div className='app__footer-form app__flex'>
+        <div className='app__flex'>
+          <input type='text' value={name} name='name' onChange={handleInputChange} className='p-text' placeholder='Your name' />
+        </div>
+        <div className='app__flex' >
+          <input type='email' value={email} name='email' onChange={handleInputChange} className='p-text' placeholder='Your email' />
         </div>
         <div>
-          <input type='email' name='email' onChange={handleInputChange} placeholder='Your email' />
+          <textarea type='textarea' value={message} name='message' onChange={handleInputChange} className='p-text' placeholder='Your message' />
         </div>
-        <div>
-          <textarea type='textarea' name='message' onChange={handleInputChange} placeholder='Your message' />
-        </div>
-        <button onClick={handleSubmit} >{loading? 'Submitting': 'Submit'}</button>
+        <button type='button' className='p-text' onClick={handleSubmit} >{loading? 'Sending...': 'Send Message'}</button>
+        <a className='app__footer-resumeDownload' href="https://drive.google.com/file/d/10jyRQx8bD4b9tkJ-QMRfjmTVl8slk8lY/view?usp=drivesdk/export?format=pdf" target='_blank' download="Ravindra_resume.pdf">Download Resume</a>
+
       </div>
+       : 
+         <div>
+           <h3 className='head-text'>Thank you for gettting in touch.</h3>
+         </div>
+      }
+
     </>
   )
 }

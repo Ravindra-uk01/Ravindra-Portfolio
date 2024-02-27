@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
+import {AppWrap} from "../../wrapper";
 import images from "../../constants/images";
 import "./Header.scss";
-import {AppWrap} from "../../wrapper";
 
 const scaleVariants = {
   whileInView:{
@@ -43,7 +43,7 @@ const Header = () => {
         className="app__header-img"
       >
 
-        <img src={images.profile} alt="Profile_bg"/>
+        <img src={images.profile1} alt="Profile_bg"/>
         <motion.img 
           src={images.circle} alt="profile circles"
           whileInView={{  scale: [0, 1] }}
@@ -58,7 +58,7 @@ const Header = () => {
          whileInView={scaleVariants.whileInView}
          className="app__header-circles"
       >
-      {[images.flutter, images.redux, images.sass].map((circle,index)=>(
+      {[images.react, images.node, images.mongo].map((circle,index)=>(
           <div key={`circle-${circle}`} className="circle-cmp app__flex">
             <img src={circle} alt="profile_bg"/>
           </div>

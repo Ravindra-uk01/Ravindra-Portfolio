@@ -9,7 +9,7 @@ const About = () => {
   const [abouts, setAbouts] = useState([]);
 
   useEffect(()=>{
-    const query = '*[_type == "abouts"]'
+    const query = '*[_type == "abouts"] | order(_createdAt asc)'
 
     client.fetch(query)
     .then((data)=> setAbouts(data));
@@ -28,7 +28,7 @@ const About = () => {
             key={about.title + idx}
             className='app__profile-item'
           >
-            <img src={urlFor(about.imgUrl)} alt='about Image' />
+            <img src={urlFor(about.imgUrl)} alt={about.title} />
             <h2 className='bold-text' style={{marginTop: 20}}>{about?.title}</h2>
             <p className='p-text' style={{marginTop:10}} >{about?.description}</p>
           </motion.div>

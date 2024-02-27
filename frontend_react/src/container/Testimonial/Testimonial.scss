@@ -16,8 +16,8 @@
     transition: all 0.3s ease-in-out;
 
     img{
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
         object-fit: cover;
     }
@@ -127,11 +127,13 @@
     div{
         width: 150px; 
         margin: 1.5rem;
+        
 
         img{
             width: 100%;
             height: auto;
             object-fit: cover;
+            border-radius: 50%;
             filter: grayscale(1);
 
             &:hover{

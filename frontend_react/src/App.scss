@@ -119,19 +119,25 @@
 
     transition: all 0.3s ease-in-out;
 
-    svg {
-      width: 15px;
-      height: 15px;
-      color: var(--gray-color);
+    a{
+      svg {
+        width: 15px;
+        height: 15px;
+        margin-top: 5px;
+        color: #000;
+      }
     }
 
     &:hover {
       background-color: var(--secondary-color);
       border-color: var(--secondary-color);
 
-      svg {
-        color: var(--white-color);
+      a{
+        svg {
+          color: var(--white-color);
+        }
       }
+      
     }
 
     @media screen and (min-width: 2000px) {
@@ -140,9 +146,11 @@
 
       margin: 0.5rem 0;
 
-      svg {
-        width: 30px;
-        height: 30px;
+      a{
+        svg {
+          width: 30px;
+          height: 30px;
+        }
       }
     }
   }
@@ -176,7 +184,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
   .app__navigation,
   .app__social {
     display: none;
